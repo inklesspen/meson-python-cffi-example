@@ -1,9 +1,3 @@
-from cffi import FFI
-
-ffibuilder = FFI()
-
-ffibuilder.cdef(
-    """
 typedef unsigned char	FcChar8;
 typedef unsigned short	FcChar16;
 typedef unsigned int	FcChar32;
@@ -55,12 +49,3 @@ void FcPatternDestroy(FcPattern *p);
 FcPattern * FcPatternFilter(FcPattern *p, const FcObjectSet *os);
 FcResult FcPatternGetString(FcPattern *p, const char *object, int n, FcChar8 **s);
 void FcObjectSetDestroy(FcObjectSet *os);
-"""
-)
-
-ffibuilder.set_source(
-    "meson_python_cffi_example._fontconfig",
-    """
-#include <fontconfig/fontconfig.h>
-""",
-)
